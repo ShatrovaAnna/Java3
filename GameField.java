@@ -77,7 +77,7 @@ public class GameField extends JPanel implements IGameField {
         if (player == GameCell.Type.Empty)
             return false;
 
-        boolean xWin = true, yWin = true, xyWin = true, yxWin = true;
+        boolean xWin = true, yWin = true, xyWin = true;
         for (int i = 0; i < 5; ++i) {
             if (i + x >= Size || m_buttons[i+x][y].type() != player)
                 xWin = false;
@@ -85,11 +85,9 @@ public class GameField extends JPanel implements IGameField {
                 yWin = false;
             if (i + y >= Size || i + x >= Size || m_buttons[x+i][i+y].type() != player)
                 xyWin = false;
-            if (y-i < 0 || x+i < 0 || m_buttons[x+i][y-i].type() != player)
-                yxWin = false;
         }
 
-        return xyWin || xWin || yWin || yxWin;
+        return xyWin || xWin || yWin;
     }
 
     private GameCell.Type m_currentMove;
