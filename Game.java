@@ -30,7 +30,6 @@ public class Game extends JFrame implements IGame {
         m_gameField = new GameField(this);
         gameFieldPanel.add(m_gameField);
 
-        // настройка главного окна
         JPanel mainPanel = new JPanel(new BorderLayout());
         add(mainPanel);
 
@@ -46,8 +45,7 @@ public class Game extends JFrame implements IGame {
         public void actionPerformed(ActionEvent e) {
             m_gameField.setActive(true);
             m_gameField.start();
-
-            setMoveText(); //чей ход
+            nextMove(); 
 
         }
     }
@@ -67,10 +65,6 @@ public class Game extends JFrame implements IGame {
 
     @Override
     public void nextMove() {
-        setMoveText();
-    }
-
-    private void setMoveText() {
         if (m_gameField.currentMove() == GameCell.Type.X) {
             m_message.setText("Ход: Х");
         }
